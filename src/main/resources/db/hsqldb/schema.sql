@@ -11,6 +11,7 @@ CREATE TABLE products (
   id         INTEGER IDENTITY PRIMARY KEY,
   description VARCHAR(30),
 );
+CREATE INDEX product_description ON products (description);
 
 CREATE TABLE vets (
   id         INTEGER IDENTITY PRIMARY KEY,

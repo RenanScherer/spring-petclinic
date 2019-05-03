@@ -35,8 +35,6 @@ import org.springframework.transaction.annotation.Transactional;
  */
 public interface ProductRepository extends Repository<Product, Integer> {
 
-	@Transactional(readOnly = true)
-	@Cacheable("products")
 	Collection<Product> findAll() throws DataAccessException;
 
 }
