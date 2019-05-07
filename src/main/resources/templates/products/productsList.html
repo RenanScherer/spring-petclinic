@@ -1,25 +1,27 @@
 <!DOCTYPE html>
 
-<html xmlns:th="https://www.thymeleaf.org" th:replace="~{fragments/layout :: layout (~{::body},'owners')}">
+<html xmlns:th="https://www.thymeleaf.org"
+	th:replace="~{fragments/layout :: layout (~{::body},'owners')}">
 
-  <body>
+<body>
 
-    <h2>Products</h2>
+	<h2>Products</h2>
 
-    <table id="products" class="table table-striped">
-        <thead>
-        <tr>
-            <th style="width: 150px;">Description</th>
-        </tr>
-        </thead>
-        <tbody>
-          <tr th:each="product : ${catalog}">
-              <td>
-                  <a th:href="@{/products/__${product.id}__}" th:text="${product.description}"/></a>
-              </td>
-          </tr>
-        </tbody>
-    </table>
+	<table id="products" class="table table-striped">
+		<thead>
+			<tr>
+				<th style="width: 150px;">Name</th>
+				<th style="width: 150px;">Description</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="product : ${catalog}">
+				<td><a th:href="@{/productsList/__${product.id}__}"
+					th:text="${product.name}" /></a></td>
+				<td><a th:text="${product.description}" /></a></td>
+			</tr>
+		</tbody>
+	</table>
 
-  </body>
+</body>
 </html>

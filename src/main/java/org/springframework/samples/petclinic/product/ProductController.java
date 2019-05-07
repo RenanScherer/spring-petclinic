@@ -17,8 +17,12 @@ package org.springframework.samples.petclinic.product;
 
 import java.util.Map;
 
+import javax.validation.Valid;
+
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 
 /**
  * @author Juergen Hoeller
@@ -35,10 +39,26 @@ class ProductController {
 		this.products = clinicService;
 	}
 
-	@GetMapping("/products")
+	@GetMapping("/productsList")
 	public String showVetList(Map<String, Object> model) {
-        model.put("catalog", this.products.findAll());
+		model.put("catalog", this.products.findAll());
 		return "products/productsList";
+	}
+
+	@GetMapping("/productsForm")
+	public String showForm(Product product) {
+		return "products/form";
+	}
+
+	@PostMapping("/productsForm")
+	public String checkProductInfo(@Valid Product product, BindingResult bindingResult) {
+
+		if (bindingResult.hasErrors()) {
+			return "products/form";
+		} else {
+			this.products.save(product);
+			return "redirect:/productsForm";
+		}
 	}
 
 }

@@ -32,37 +32,43 @@ import org.springframework.samples.petclinic.model.BaseEntity;
 @Table(name = "products")
 public class Product extends BaseEntity {
 
-    /**
+	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 
-    @NotEmpty
-    @Column(name = "description")
-    private String description;
+	@NotEmpty
+	@Column(name = "name")
+	private String name;
+
+	@NotEmpty
+	@Column(name = "description")
+	private String description;
 
 	/*
 	 * @Column(name = "product_id") private Integer productId;
 	 */
-    
-    public Product() {
-    }
 
-    /**
-     * Creates a new instance of Visit for the current date
-     */
-    public String getDescription() {
-        return this.description;
-    }
+	public Product() {
+	}
 
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-	/*
-	 * public Integer getproductId() { return this.descriptionId; }
-	 * 
-	 * public void setproductId(Integer descriptionId) { this.descriptionId =
-	 * descriptionId; }
+	/**
+	 * Creates a new instance of Visit for the current date
 	 */
+	public String getName() {
+		return this.name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getDescription() {
+		return this.description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
 }

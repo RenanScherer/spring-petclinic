@@ -8,7 +8,8 @@ DROP TABLE owners IF EXISTS;
 DROP TABLE products IF EXISTS;
 
 CREATE TABLE products (
-  id         INTEGER IDENTITY PRIMARY KEY,
+  id          INTEGER IDENTITY PRIMARY KEY,
+  name        VARCHAR(30),
   description VARCHAR(30),
 );
 CREATE INDEX product_description ON products (description);
